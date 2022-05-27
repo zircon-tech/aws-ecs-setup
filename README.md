@@ -40,7 +40,7 @@ $ docker build -t awesome-api .
 4. Con lo anterior en su lugar, podemos finalmente subir la imagen a ECR con el siguiente comando:
 
 ```bash
-$ docker push [account-id].dkr.ecr.eu-west-1.amazonaws.com/awesome-api:lates
+$ docker push [account-id].dkr.ecr.eu-west-1.amazonaws.com/awesome-api:latest
 ```
 5. Si los comandos sucedieron con éxito podremos verificar que la nueva versión es listada en ECR en la Web Console
 
@@ -48,6 +48,29 @@ $ docker push [account-id].dkr.ecr.eu-west-1.amazonaws.com/awesome-api:lates
 
 ![image](https://user-images.githubusercontent.com/4985062/170290064-ea1214c6-4438-48bd-ad21-5dc7265ae037.png)
 
+Asignar un nombre y seleccionar la opción de VPN con sus valores por defecto. Crearemos el resto de los recursos dentro de esta misma VPN.
+![image](https://user-images.githubusercontent.com/4985062/170702355-3032cbd4-5ed3-4501-9491-d0113a0ffa49.png)
+
+7. Como parte de este clúster, el siguiente paso es crear una nueva Task Definition. Las definiciones de tareas especifican la información del contenedor para su aplicación, como cuántos contenedores forman parte de su tarea, qué recursos usarán, cómo se vinculan entre sí y qué puertos de host usarán.
+
+En el menú de Tasks Definitions crear una nueva tarea y seleccionar la opción Fargate que facilitará la provisión de instancias para nuestra aplicación 
+![image](https://user-images.githubusercontent.com/4985062/170702774-7bf100b3-efec-4240-b8d9-9ef9da2ad2ea.png)
+
+Asignar un nombre y un sistema operativo
+![image](https://user-images.githubusercontent.com/4985062/170702986-13c6d6ea-6122-4348-a544-3688bde6a7be.png)
+
+Luego proveer los requisitos de hardware para nuestra aplicación, el costo de Fargate estará basado en esto. Para un setup inicial elegir los valores mīnimos:
+![image](https://user-images.githubusercontent.com/4985062/170703309-55d95346-dad6-423c-8688-59eb9f59c526.png)
+
+El siguiente paso es agregar nuestro Container Docker que creamos al comienzo. Para ello asignar un nombre y el ARN a nuestra imagen dentro de ECR.
+![image](https://user-images.githubusercontent.com/4985062/170703796-0665333c-155c-4f07-a84f-bbe2bba9b98a.png)
+
+Dentro de la misma ventana, agregar las variables de entorno que son necesarias para ejecutar la aplicación
+
+![image](https://user-images.githubusercontent.com/4985062/170703686-031ff2a5-9168-4db4-9327-6883c0806a38.png)
 
 
+Dejar el resto de los valores por defecto y click en Create.
+
+8. Con nuestra Task Definition en su lugar
 
