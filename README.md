@@ -72,5 +72,28 @@ Dentro de la misma ventana, agregar las variables de entorno que son necesarias 
 
 Dejar el resto de los valores por defecto y click en Create.
 
-8. Con nuestra Task Definition en su lugar
+8. Para que nuestro servicio sea accesible y escalable, es recomendable configurar un Load Balancer que sea el punto de entrada a nuestra aplicacion. El LB redirige el trafico a los contenedores Fargate a traves de un Target Group que identifica el pool de instancias el cual se actualiza automaticamente con la administracion de dichas imagenes. Para ello, abandonar la seccion de ECS y dirigirse a EC2 para configurar un Application Load Balancer
+![image](https://user-images.githubusercontent.com/4985062/170716590-675cd65c-ed9a-46a8-a0df-2982e14e3bb3.png)
+
+Luego, asignar y nombre y seleccionar la VPC configurada anteriormente.
+![image](https://user-images.githubusercontent.com/4985062/170716761-49bf3c60-cb38-47fd-93de-3d7a787bcb7f.png)
+
+Posteriormente, seleccionar uno de los security groups de la VPC y dentro de la sección de listeners proceder a crear un Target Group.
+![image](https://user-images.githubusercontent.com/4985062/170717018-22554dd8-8045-4c58-80a5-5bbc8379450d.png)
+
+
+9. Con nuestra Task Definition en su lugar procedemos a crear un Servicio. Un servicio permite especificar cuántas copias de la definición de tarea ejecutar y mantener en un clúster. Vamos dentro del cluster, tab de Services, Create. Seleccionar un nombre y elegir la Task y Cluster creados en los pasos anteriores. Adicionalmente, seleccionar el numero de Tasks redundantes a ejecutar.
+
+![image](https://user-images.githubusercontent.com/4985062/170713695-8f6e3105-cf87-4784-8ee3-d22732e875f0.png)
+
+![image](https://user-images.githubusercontent.com/4985062/170713916-4e8d51fe-bece-4d2c-821d-f913e75dff9c.png)
+
+
+
+Dejar el resto de los valores por defecto y finalizar la creación.
+
+<br/>
+<br/>
+ECS se encargará de provisionar los recursos y descargar la imagen de ECS para su ejecución. 
+
 
